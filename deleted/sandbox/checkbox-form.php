@@ -7,7 +7,7 @@ require_once "vendor/autoload.php";
 use GuzzleHttp\Client;
 
        // $responseArr = Http::withBasicAuth('d1e596bee2f54be990e16e8dd6ddea3e', 'f34a64bccf8d4964aefa04fa586dce83')->get('http://ssapi.shipstation.com/orders?customerName=headhoncho@whitehouse.gov&page=1&pageSize=7');
-       $responseArray = $client->request('GET', 'http://ssapi.shipstation.com/orders?customerName=headhoncho@whitehouse.gov&page=1&pageSize=7', ['auth' => ['d1e596bee2f54be990e16e8dd6ddea3e', 'f34a64bccf8d4964aefa04fa586dce83']]);   
+       $responseArray = $client->request('GET', 'http://ssapi.shipstation.com/orders?customerName=headhoncho@whitehouse.gov&page=1&pageSize=15', ['auth' => ['d1e596bee2f54be990e16e8dd6ddea3e', 'f34a64bccf8d4964aefa04fa586dce83']]);   
         
        $body = $responseArray->getBody();
        $arr_body = json_decode($body, true);

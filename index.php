@@ -61,12 +61,9 @@ $client = new Client([
     // Base URI is used with relative requests
     'base_uri' => 'https://ssapi.shipstation.com',
 ]);
-  
 
- 
 //get status code using $response->getStatusCode();
  
-
 ?>
 
 

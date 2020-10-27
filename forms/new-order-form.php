@@ -5,10 +5,10 @@
     <label>Name</label>
     <div class="two fields">
       <div class="field">
-        <input type="text" name="shipping[first-name]" placeholder="First Name">
+        <input type="text" name="firstname" placeholder="First Name">
       </div>
       <div class="field">
-        <input type="text" name="shipping[last-name]" placeholder="Last Name">
+        <input type="text" name="lastname" placeholder="Last Name">
       </div>
     </div>
   </div>
@@ -16,12 +16,12 @@
     <label>Address</label>
     <div class="fields">
       <div class="sixteen wide field">
-        <input type="text" name="shipping[address1]" placeholder="Address Bar #1">
+        <input type="text" name="address1" placeholder="Address Bar #1">
       </div>
     </div>
     <div class="fields">
       <div class="sixteen wide field">
-        <input type="text" name="shipping[address2]" placeholder="Address Bar #2">
+        <input type="text" name="address2" placeholder="Address Bar #2">
       </div>
     </div>
     
@@ -445,18 +445,12 @@
   <input type="submit" name="test" id="test" value="RUN" /><br/>
 
   <?php     
-  $Name = 'test';
-  $Address1 = 'dff';
-  $Address2 = 'asdasd';
-
-    if(isset($_POST['shipping[first-name]'])){
-      $Name   = $_POST['shipping[first-name]'];
-      $Address1   = $_POST['shipping[address1]'];
-      $Address2   = $_POST['shipping[address2]'];
-    }     
-
 
         if(array_key_exists('test', $_POST)) { 
+       
+          $Name   = $_POST['firstname'];
+          $Address1   = $_POST['address1'];
+          $Address2   = $_POST['address2'];
 
           $curl = curl_init();
 
