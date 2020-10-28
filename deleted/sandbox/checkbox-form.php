@@ -2,20 +2,20 @@
 
 <form id="frm-example" action="/path/to/your/script.php" method="POST">
 <?php
-require_once "vendor/autoload.php";
-  
+require_once "../../vendor/autoload.php";  
 use GuzzleHttp\Client;
-
-       // $responseArr = Http::withBasicAuth('d1e596bee2f54be990e16e8dd6ddea3e', 'f34a64bccf8d4964aefa04fa586dce83')->get('http://ssapi.shipstation.com/orders?customerName=headhoncho@whitehouse.gov&page=1&pageSize=7');
+$client = new GuzzleHttp\Client();
+try {
        $responseArray = $client->request('GET', 'http://ssapi.shipstation.com/orders?customerName=headhoncho@whitehouse.gov&page=1&pageSize=15', ['auth' => ['d1e596bee2f54be990e16e8dd6ddea3e', 'f34a64bccf8d4964aefa04fa586dce83']]);   
-        
+       if($responseArray->getStatusCode()!= 200){
+         throw new Exception("Error");
+       }
        $body = $responseArray->getBody();
        $arr_body = json_decode($body, true);
-        
-       //print_r($arr_body["orders"][0]["orderId"]);
-       //   print_r(count($arr_body["orders"]));
-        
-       // $orderList = $arr_body['orders'];
+   }
+   catch(Exception $e) {
+      echo 'Message: ' .$e->getMessage();
+    }
 ?>
 <table id="example" class="display" cellspacing="0" width="100%">
    <thead>
@@ -30,8 +30,8 @@ use GuzzleHttp\Client;
    </thead>
    <tbody>
    <?php for($x = 0; $x < count($arr_body["orders"]); $x++ ) { ?>
-      <tr>
-      <td>1</td>
+      <tr>    
+      <td><?php echo $arr_body["orders"][$x]["orderId"] ?></td>
          <td> <?php echo $arr_body["orders"][$x]["orderId"]  ?></td>
          <td><?php echo $arr_body["orders"][$x]["carrierCode"]  ?></td>
          <td><?php echo $arr_body["orders"][$x]["billTo"]["name"]  ?></td>

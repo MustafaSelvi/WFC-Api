@@ -63,11 +63,8 @@ $client = new Client([
 ]);
 
 //get status code using $response->getStatusCode();
- 
+
 ?>
-
-
-
 <!-- sidebar menu goes here --> 
 
       <div class="ui grid">
@@ -92,8 +89,6 @@ $client = new Client([
 
       <?php include_once "footer.php" ?>
 
-
-
       <div class="ui modal" id="new-order-modal">
        <div class="scrolling content" style="margin-bottom:50px;">
         <?php include_once "./forms/new-order-form.php" ?>
@@ -110,13 +105,9 @@ $client = new Client([
 
       <div class="ui modal" id="account-settings-modal">
 
-      <?php include_once "./forms/account-settings-form.php" ?>
-           
+      <?php include_once "./forms/account-settings-form.php" ?>          
       </div>
-
       <script>
-
-
 </script>
 
       <script>  

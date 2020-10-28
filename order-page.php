@@ -3,11 +3,12 @@
               <i class="plus icon"></i>
               New Order
             </button>
-            
-            <button class="ui red compact labeled icon button" style="margin-bottom:20px;" id="new-order-button">
+            <form action="" method="POST">
+            <button class="ui red compact labeled icon button" name="delete-order" style="margin-bottom:20px;" id="delete-order">
             <i class="minus circle icon"></i>
               Delete Orders
             </button>
+            </form>
             <button class="ui blue compact labeled icon button" style="margin-bottom:20px;" id="new-order-button">
             <i class="minus circle icon"></i>
               Update Orders
@@ -21,6 +22,39 @@
             <?php include_once "./deleted/sandbox/checkbox-form.php" ?>
 
           </div>
+          
+<?php
+
+if(array_key_exists('delete-order', $_POST)) {
+
+  $curl = curl_init();
+  try{
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://ssapi.shipstation.com/orders/5633940",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "DELETE",
+    CURLOPT_HTTPHEADER => array(
+      "Host: ssapi.shipstation.com",
+      "Authorization: Basic ZDFlNTk2YmVlMmY1NGJlOTkwZTE2ZThkZDZkZGVhM2U6ZjM0YTY0YmNjZjhkNDk2NGFlZmEwNGZhNTg2ZGNlODM="
+    ),
+  ));
+  
+  $response = curl_exec($curl);
+  
+  curl_close($curl);
+}
+catch(Exception $e){
+  echo 'Message: ' .$e->getMessage();
+}
+  echo $response;
+}
+
+?>
           <script>
                             $(document).ready(function() {
                 var table = $('#example').DataTable({     
