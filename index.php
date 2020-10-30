@@ -48,11 +48,11 @@
 </head>
 <body>
 <!-- menu goes here --> 
-<?php
+  <?php
               echo file_get_contents("navbar.html");
-          ?>
+   ?>
     
-    <?php
+  <?php
 require_once "vendor/autoload.php";
   
 use GuzzleHttp\Client;

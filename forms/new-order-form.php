@@ -447,13 +447,12 @@
   <?php     
 
         if(array_key_exists('test', $_POST)) { 
-       
+               
           $Name   = $_POST['firstname'];
           $Address1   = $_POST['address1'];
           $Address2   = $_POST['address2'];
-
+          
           $curl = curl_init();
-
           curl_setopt_array($curl, array(
             CURLOPT_URL => "https://ssapi.shipstation.com/orders/createorder",
             CURLOPT_RETURNTRANSFER => true,
@@ -475,7 +474,7 @@
           
           curl_close($curl);
           echo $response;
-          
+
           echo '<script language="javascript">';
           echo 'alert("Order Successfully Created")';
           echo '</script>';    

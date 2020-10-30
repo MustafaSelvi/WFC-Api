@@ -14,7 +14,7 @@ try {
        $arr_body = json_decode($body, true);
    }
    catch(Exception $e) {
-      echo 'Message: ' .$e->getMessage();
+      echo 'Message: Connection Error ' .$e->getMessage();
     }
 ?>
 <table id="example" class="display" cellspacing="0" width="100%">
